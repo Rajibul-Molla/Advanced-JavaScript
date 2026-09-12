@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template String</title>
+</head>
+<body>
+
+    <script>
+        let name="Rajibul Molla";
+        let age=25;
+        document.write("Hello" +" " + name + " " + "Welcome to Advanced JS");
+
+        //This is hard to understand. Here + used to concitanate variable and string
+
+
+        document.write("<br>")
+        document.write(`Hello ${name} Welcome to advanced J. "${age}" is your age`);
+
+        // ` is used to write variable and string together ${} is used to write variable name .
+
+
+
+
+        // Teplate String in function
+        document.write("<br>");
+        let firstName = "Rajibul";
+        let lastName = "Molla";
+
+        function fullName(fName,lName){
+            return `Hello ${fName} ${lName}`;
+        }
+
+        document.write(`${fullName(firstName,lastName)}`)
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
