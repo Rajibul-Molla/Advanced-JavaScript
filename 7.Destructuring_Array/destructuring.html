@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Destructuring</title>
+</head>
+<body>
+
+    <script>
+
+        let user = ["Rajibul Molla", 22, "B.Tech"];
+
+        let [name, age, course] = user;
+
+        console.log(name);
+        console.log(age);
+        console.log(course);
+
+
+        console.log("-------------SECOND EXAMPLE---------------");
+
+        let colors = ["Red", "Green"];
+
+        let [primary, , tertiary = "Blue"] = colors;
+
+        console.log(primary);
+        console.log(tertiary);
+
+
+        console.log("------------------THIRD EXAMPLE------------");
+
+        let arr = ["Yahoo Baba", 25, ["Delhi", "India"]];
+
+        let [fname, userAge, [city, country]] = arr;
+
+        console.log(fname);
+        console.log(city);
+        console.log(country);
+
+
+        console.log("-------------------FOURTH EXAMPLE--------------");
+
+        let numbers = [10, 20, 30, 40, 50];
+        let [first, second, ...remaining] = numbers;
+
+        console.log(first);
+        console.log(remaining);
+
+        function getStudent() {
+            return ["ABC Kumar", "Computer Science"];
+        }
+
+        let [sName, sBranch] = getStudent();
+        console.log(`Student: ${sName}, Branch: ${sBranch}`);
+
+    </script>
+    
+</body>
+</html>
