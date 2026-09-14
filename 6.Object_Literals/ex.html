@@ -8,7 +8,140 @@
 <body>
 
     <script>
-        
+
+
+
+
+        // Example of Object literal
+        let name = " Rajibul Molla";
+        let course = "B.Tech";
+        let obj1 = {
+            name:name,
+            course:course
+        };
+        //This is compact version works fine 
+        let obj2= {
+            name,
+            course
+        }
+        console.log(obj1);
+        console.log(obj2);
+        // if to-assign and from assign variable name same then after ES6 update we can write only one .
+
+
+
+
+
+        console.log("-------------SECOND EXAMPLE---------------");
+    // SECOND EXAMPLE OF OBJECT LITERALS
+
+        var n="namee";
+
+        let obj5 = {
+            [n]:"XYZ Kumar",
+            course:"B.Tech",
+            ["student"+n]:"ABC KUMAR",
+            detail : function (){
+                return `Name of the student is ${this.namee} of Course ${this.course}`;
+            }
+        };
+        console.log(obj5);
+        // Here [] we take the name as key and assign a value to the variable . we can aslo perform arithmetich operation to assign name like we did for student name.
+
+
+        console.log(obj5.detail());
+
+        // We can use the computed variable 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //THIRD EXAMPLE OF OBJECT LITERALS
+
+        let obj10 = {
+            name : "Yahoo Baba",
+            show:function(){
+                console.log(this.name);
+            }
+        };
+        //compact way to write object function
+
+        let obj11 = {
+            name:"BABA YAHOO",
+            show(){
+                console.log(this.name);
+            }
+        };
+        console.log("------------------THIRD EXAMPLE------------")
+        console.log(obj10);
+        console.log(obj11.show())
+
+
+
+
+//FOURTH EXAMPLE 
+console.log("-------------------FOURTH EXAMPLE--------------")
+        let fname = "Yahoo";
+        let lname = "Baba";
+        let coursee = "Btech";
+
+        function student(fname, lname, course){
+            let fullname = fname + " " + lname;
+            return {fullname, coursee};
+        }
+        console.log(student(fname, lname, course));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
+        // Defining an Object Literal in oldeversion
+        let student = {
+            name: "Rajibul Molla",
+            age: 22,
+            isEnrolled: true,
+            subjects: ["JS", "HTML", "CSS"],
+            // Method inside an object
+            getDetails: function() {
+                return `${this.name} is ${this.age} years old.`;
+            }
+        };
+
+        // Accessing properties
+        console.log(student.name);          
+        console.log(student["age"]);       
+        console.log(student.getDetails());
+        */
+
+
+
     </script>
     
 </body>
