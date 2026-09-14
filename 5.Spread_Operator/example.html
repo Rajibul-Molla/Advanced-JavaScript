@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread Operator</title>
+</head>
+<body>
+
+    <script>
+
+            function spread_opt(name,...args){
+                console.log(arguments);
+                let total=0;
+                for(let i in args){
+                    total +=args[i];
+                }
+                console.log(`${name} total is ${total}`);
+            }
+
+        /*  let arr= [50,50];
+            
+            spread_opt("XYZ",arr);
+        */
+       // It can not be perform because rest operator expect multiple arguments . Here we are rapping and sending only a array . sotution to this is Spread Operator . it spreat eatch element and send as indivisual multiple arguments.(Spread operator will always be use at the time of calling).
+
+       let arr = [40,30,50];
+       spread_opt("XYZ",...arr);
+
+
+
+
+
+
+
+
+
+
+    /*   var arr2 = [10,20,30,50];
+       console.log(...arr2)
+
+       var num1=[10,20,30,40,50];
+
+       var num2=num1;
+       num1.push(100);
+       document.write(`------------------------`,"<br>")
+       document.write(num2)
+
+       // Here we copy num1 into num2 . but if we change in the original array its affacting the copy array which suppose not to happen . Solltution to this is Spread operator 
+
+    */
+
+       var arr2 = [10,20,30,50];
+       console.log(...arr2)
+
+       var num1=[10,20,30,40,50];
+
+       var num2=[...num1];
+       num1.push(100);
+       document.write(`------------------------`,"<br>")
+       document.write(num2,"<br>")
+
+       // Using spread operatior this array copy only once . Not the original array always
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+       // Thirs use case of spread operator is better concatination
+
+       //earlier we concat like  this 
+
+       num3 = num1.concat(num2);
+       document.write(`Merge two array using concat method ${num3}`,"<br>")
+
+       num4=[...num1,...num2,450];
+       document.write(`Merge two array using SPREAD_OPERATOR ${num4}`,"<br>")
+
+       // Better way of merging two array . we can add any new value at any point of time .
+
+
+
+
+
+
+
+
+
+
+
+
+    // WE CAN USE SPREAT OPERATOR WITH OBJECTS 
+
+    var obj1={
+        name:"Rajibul Mollaaa"
+    };
+    var obj2={
+        age:25
+    };
+
+    var obj3= {...obj1,...obj2};
+    console.log(obj3);
+
+    </script>
+    
+</body>
+</html>

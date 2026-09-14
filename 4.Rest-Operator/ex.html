@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest Operator</title>
+</head>
+<body>
+    <script>
+        
+        function sum(num1,num2){
+            return num1+num2;
+        }
+
+        document.write(sum(30,40) + "<br>");
+        // it can only accept 2 arguments . if you have more than 2 arguments . then it will not work. previous solution to that is 
+
+        function sum_solution(){
+            console.log(arguments)
+            let sum_val=0;
+            for(let i in arguments){
+                sum_val +=arguments[i];
+            }
+            return sum_val;
+        }
+
+        document.write(sum_solution(10,30,40,67,60),"<br>");
+
+
+
+
+        //Here the problem is it can not accept different type of data . means you can not send string with it . sollution to that is rest operator . it can only be in the last  
+
+      /*  let show= sum_solution("Rajibul Molla",40,50,50);
+        console.log(show); -> error 0Rajibul Molla405050
+
+        */
+
+
+
+        function rest_opt(name,...args){
+            let total=0;
+            for(let i in args){
+                total +=args[i];
+            }
+            document.write(`TOtal value is : ${total} & your name is ${name}`,"<br>");
+        }
+
+        rest_opt("Rajibul molla",40,50,60,80);
+        rest_opt("XYZ",40,50,60,60,40,5500,80);
+
+
+        /* 
+           Notes on rest_opt():
+           1. Solve Parameter Mixing: Unlike the older `arguments` object, the Rest Operator (...args) allows passing custom non-numeric parameters (like strings) without corrupting array computations.
+           2. Parameter Placement: Rest parameters MUST always be declared as the LAST parameter in the function signature (e.g., function(name, ...args)).
+           3. Real Array Conversion: `...args` gathers all remaining individual arguments into a true JavaScript array containing only numerical values to calculate `total`.
+        */
+
+
+
+
+
+    </script>
+</body>
+</html>
