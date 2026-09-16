@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance</title>
+</head>
+<body>
+
+
+    <script>
+         // Inheritance means suppose there are two class . class a and class b . here class a is the parent class and class b is the child class because class b can inherit class's properties and methods .
+         
+        class a{
+            name = "Rajibul";
+            age=25;
+
+            greet(){
+                console.log("Hello Rajibul this is the base class (Class A)");
+            }
+        }
+
+        class b extends a{
+
+        }
+
+        let obj1=new a();
+        obj1.greet();
+
+
+
+        let obj2= new b();
+        obj2.greet();
+        console.log(obj2.name); 
+
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

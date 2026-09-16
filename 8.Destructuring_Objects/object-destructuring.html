@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Destructuring</title>
+</head>
+<body>
+ 
+
+    <script>
+        //In object destructuring object key name and variable name should be same otherwise the value will not be assigned;
+
+
+        let user1={
+            sname: "Rajibul Molla",
+            sage: 25,
+            scourse : "B.Tech"
+        };
+        let user2 = {
+            name: "Ankit Kumar",
+            age: 26,
+            gender: "femail"
+        };
+
+        let {name,age,gender}= user2;
+        console.log(name);
+        console.log(age);
+        console.log(gender);
+
+
+       // let {name, ,gender}= user2; -> Here you can not do like this . like we did on array . insted you can completly remove the variable you dont want . here secuence wont matter because we use the same variable name.
+
+       console.log("--------------------------");
+
+        let {sname,scourse}= user1;
+        console.log(sname);
+        console.log(scourse)
+
+
+
+
+        console.log("-----------------");
+        let obj1={
+            math:40,
+            physics:40,
+            chemistry:50,
+            course: "Class 10", 
+            overall: 9
+        };
+        // We can take alices , shortform
+        let {math: m , physics: p,chemistry : c,course: cc}= obj1;
+        c=100; // THis is how we change object variable value
+
+        console.log(cc);
+        console.log(c);
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

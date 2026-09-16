@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP Introduction</title>
+</head>
+<body>
+
+
+    <script>
+
+        class calculator{
+             a=10;
+             b=20;
+             c=0;
+            
+            sum(){
+                return this.a+this.b;
+            };
+            sub(){
+                return this.a-this.b;
+            };
+            message(name){  // This is a method 
+                console.log(`Hello ${name}`);
+            }
+            print(){
+                console.log("This is the print hub kolkata");
+            }
+        }
+
+        const obj = new calculator();
+        console.log(obj.a);
+        console.log(obj.sum());
+        console.log(obj.message("Raj"));
+        obj.print();
+
+
+
+
+        console.log("--------------------------");
+
+        // here are three types of method 
+        /*.1 Constructor -> This method is the first to to get called . and its auto called.Constructor is used to initializes objects.
+
+
+        constructor(){ 
+            console.log("Hello");
+        }
+        */
+
+        
+        /*2. prototype -> normal method , we give a name of the method and it only executes when called .it also used to perform calculation of the value we just assigned through constructor.object are needed to access the method
+
+
+        message(){
+            console.log("Hello World!");
+        }
+
+
+        */
+
+
+        /* 3.Static - > we dont need any objects to call static method. just write classname.static function name 
+
+
+        static name(){
+        console.log("Hello");
+        }
+
+        */
+
+        class student{
+            constructor(name,age){
+                this.studentName = name;
+                this.studentage = age;
+                console.log("Constructor is called ");
+            }
+
+            greet(){
+                console.log(`Hello ${this.studentName} Your Age is ${this.studentage}`);
+            }
+
+
+            static staticmethod(){
+                console.log("Static Method is called");
+            }
+        }
+
+        let raj = new student("Rajibul Molla",25);
+        let ronith = new student("Ronith",20);
+
+        raj.greet();
+        ronith.greet()
+        student.staticmethod()
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
