@@ -36,6 +36,96 @@
 
 
 
+        console.log("-----------------");
+        class employee {
+            constructor(name){
+
+                this.empname=name
+                console.log("Constructor : Employee " + name);
+            }
+
+            info(){
+                console.log("Hello " + this.empname + " Welcome Back class Employee");
+            }
+        }
+
+        class manager extends employee{
+            /*constructor(){
+                super(); // to call the parent class constructor.
+                console.log("Constructor : Manager")
+            }*/
+
+
+            info(){
+                super.info(); //this is how to call a super or parent class methods
+                console.log("Hello " + this.empname + " Welcome Back class Manager");
+            }
+
+
+
+
+        }
+
+        // when we have constructor of both parent and child classs . only child class constructor will be called and through a error . to call the parent class constructor also we use super() keyword.
+
+        let obj4 = new manager("Rak");
+        obj4.info()
+
+
+
+
+
+
+
+
+        console.log("-----------------Real life Example-----------");
+        class person{
+            constructor(name,age,salary){
+                this.pname=name;
+                this.page=age;
+                this.psalary=salary;
+                console.log("COnstructor Person");
+            }
+            info(){
+                document.write(`<h3>Class Person</h3>
+                Name: ${this.pname}<br>
+                Age: ${this.page}<br>
+                Salary: ${this.psalary}`);
+            }
+        }
+
+
+        class teacher extends person{
+            info(){
+                let ta=1000;
+                let pa=3000;
+                let totalsalary = this.psalary +ta+pa;
+                document.write(`<h3>Class Teacher</h3>
+                Name: ${this.pname}<br>
+                Age: ${this.page}<br>
+                Salary: ${totalsalary}`);
+            }
+
+        }
+
+        //Multi -Level Inheritanch
+        class test extends teacher{
+            
+        }
+
+ 
+
+
+
+        let finalobj1 = new person("Ronith",16,5000);
+        finalobj1.info();
+
+        let finalobj2 = new teacher("Rajibul Molla",26,50000);
+        finalobj2.info();
+
+
+
+
 
 
 
