@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+    <script>
+        let complete = true;
+        let prom = new Promise(function(resolve,reject){
+            if(complete){
+                resolve("I am Sucess");
+            }
+            else{
+                reject("I am failed");
+            }
+
+        });
+        console.log(prom);
+
+
+
+
+
+
+
+        //OR
+
+
+
+
+
+
+
+        console.log("Functional Way")
+        function prom2(message){
+            return new Promise(function(resolve,reject){
+                console.log("Fetching Data please wait");
+
+                setTimeout(()=>{
+                if(message){
+                    resolve("I am Resolved");
+                }
+                else{
+                    reject("I am Rejected");
+                }
+                },2000);
+
+            })
+        }
+        let onfulfilment = (result) =>{
+            console.log(result);
+        }
+        let onrejection = (error)=>{
+            console.log(error);
+        }
+        
+
+        prom2(true).then(onfulfilment).catch(onrejection);
+
+
+
+        //prom2(false).catch(onfulfilment);
+        // console.log(prom2(false));
+
+
+
+
+//linked jQuery CDN link
+        console.log("Fetch Data from External Server")
+        function prom3(){
+            return new Promise(function(resolve,reject){
+                console.log("Fetching Data please wait");
+
+                setTimeout(()=>{
+                    $.get("https://jsonplaceholder.typicode.com/posts",(data)=>{
+                        console.log(data);
+                    }).fail(err => {
+                        reject("Failed to load json")
+
+                    })
+
+                },2000);
+
+            })
+        }
+        let onfulfilment2 = (result) =>{
+            console.log(result);
+        }
+        let onrejection2 = (error)=>{
+            console.log(error);
+        }
+        
+
+        prom3().then(onfulfilment).catch(onrejection);
+
+
+
+
+
+    </script>
+
+    
+</body>
+</html>
