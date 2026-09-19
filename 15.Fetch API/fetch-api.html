@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Api</title>
+</head>
+<body>
+
+
+    
+
+
+
+    <script>
+        //Fetch is a JavaScript method used to make asynchronous HTTP requests and retrieve data from a server. fetch method returns a promise . then method also return a promise
+
+        fetch("./content/content.txt").then((response) => {
+            return response.text();
+
+        }).then((data) =>{
+            // console.log(data)
+            document.write(data);
+        })
+
+
+
+
+
+
+
+        fetch("https://jsonplaceholder.typicode.com/users").then((response2) =>{
+            return response2.json();
+        }).then((data2) =>{
+            console.log(data2);
+            console.log(data2[0].name);
+            /*for (let i in data2){
+                console.log(data2[i])
+            }*/
+        }).catch((error)=>{
+            console.log("Cant fetch data from the server");
+        })
+
+
+
+        // Fetch student data {json format data}
+
+        fetch("./content/student-data.json").then((response3) =>{
+            return response3.json().then((data3)=>{
+                // console.log(data3);
+                for(let i in data3){
+                    document.write(`<br>${data3[i].name} - ${data3[i].city} <br>`)
+                }
+            })
+        }).catch((err)=>{
+            console.log("Cant fetch data from student-data.json");
+        })
+
+
+
+
+
+        // SERVER SIDE CRUD OPERATION fetch insert update detele
+console.log("-----------------------");
+
+
+        // Insertion
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  body: JSON.stringify({
+    title: 'foo',
+    body: 'bar',
+    userId: 1,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => console.log(json));
+
+
+
+
+
+
+  // Update
+  fetch('https://jsonplaceholder.typicode.com/posts/1', {
+  method: 'PUT',
+  body: JSON.stringify({
+    id: 1,
+    title: 'foo',
+    body: 'bar',
+    userId: 1,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => console.log(json));
+
+         
+
+        
+
+    </script>
+</body>
+</html>
