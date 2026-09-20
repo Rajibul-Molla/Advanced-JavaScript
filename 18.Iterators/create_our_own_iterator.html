@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create our own iterator</title>
+</head>
+<body>
+
+    <script>
+
+        function numberIterator(arr){
+            let nextNum=0;
+            return {
+                next(){
+                    if(nextNum < arr.length){
+                        return {
+                        value : arr[nextNum++],
+                        done: false
+                    }
+
+                    }
+                    else{
+                        return {
+                        value: undefined,                      
+                        done: false
+                    }
+
+                    }
+
+
+                }
+            }
+
+        }
+
+
+        let numbers = [100,200,300];
+        let num = numberIterator(numbers);
+
+        console.log(num.next());
+        console.log(num.next().value);
+        console.log(num.next());
+         console.log(num.next());
+
+
+
+
+    </script>
+    
+</body>
+</html>
