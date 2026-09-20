@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Symbols</title>
+</head>
+<body>
+
+
+    <script>
+        /*
+            Symbol is a primitive data type in JavaScript that creates a unique value.
+
+            Definition: A Symbol is a unique and immutable primitive value, mainly used as unique keys for object properties.
+            let x = Symbol("Hello");
+            let y = Symbol("Hello");
+            (x===y) -> False 
+        */
+
+
+        let x= Symbol("Hello");
+        let y = Symbol ("Hello");
+
+        console.log(x===y); // False
+
+
+        let str1 = "Hello";
+        let str2= "Hello";
+        console.log(str1 === str2); //True
+
+
+        // alert(x); -> can not directly print on document because its not a string . we have to convert it to string first 
+
+        alert(x.toString())
+
+        // TO show the symbol value we have to print description
+
+        document.write(x.description);
+
+
+
+        // How to use symbol in a object
+        let sex = Symbol("sex");
+        let obj = {
+            name: "Rajibul",
+            age: 23
+            // [sex]="male"
+          
+        };
+        obj[sex]= "male";
+        console.log(obj);
+        console.log(obj[sex]);
+
+
+        // we cant get Symbol value from a loop . also gets skipped at the time of json conversion
+
+        console.log(JSON.stringify(obj));
+
+
+
+    </script>
+    
+</body>
+</html>
