@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generators</title>
+</head>
+<body>
+
+
+    <script>
+        /*
+        A Generator is a special type of function that can pause its execution and resume it later using the yield keyword.
+
+        Generators are created using function* and return an iterator.
+        */
+       function *generator1(){
+        // console.log("First message");
+        yield "Yield No 1";
+        // console.log("Second Message");
+        yield "yield no 2";
+        yield "yield no 3";
+
+       }
+
+       let g= generator1();
+       console.log(g.next().value); // value print
+        g.next() // skip
+       console.log(g.next()); // return iterator
+
+    //    for (let value of g){
+    //     console.log(value);
+    //    }
+
+
+// Controled Function 
+    function *generateit() {
+    let nextNum = 300;
+    while (true) {
+        yield(nextNum++);
+    }
+}
+
+    let gg = generateit();
+    console.log(gg.next());
+    console.log(gg.next());
+    console.log(gg.next());
+    for (let x of gg){
+        if(x >310){
+            break
+        }else{
+            console.log(x);
+        }
+    }
+
+
+
+
+    </script>
+    
+</body>
+</html>
