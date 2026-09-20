@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async & Await</title>
+</head>
+<body>
+
+
+    <script>
+        /*
+        async and await are used in JavaScript to handle asynchronous operations such as API calls, fetching data, timers, etc., in a cleaner and easier way.
+
+        async → makes a function return a Promise.
+        await → pauses the execution of an async function until a Promise is completed.
+        */
+       
+
+        //let test = async function (){}
+       async function test(){
+        return "Hello";
+       }
+       test().then((result)=>{
+            //console.log(result);
+       })
+
+
+
+
+
+
+
+       async function test1(){
+        /*
+
+        try(){
+
+        }catch(){
+
+        } */
+        const response = await fetch("../15.Fetch API/content/student-data.json");
+        const students = await response.json();
+        return students;
+
+        // return (await fetch("../15.Fetch API/content/student-data.json")).json();
+        
+       }
+
+       /*console.log("1st Message");
+       let a = test1();
+       console.log("4th Message");
+       console.log(a);
+       console.log(a[0]);
+       */
+
+       test1().then((data)=>{
+        console.log(data);
+        console.log(data[0]);
+       }).catch((err)=>{
+        consol.log("Cant fetc data");
+       })
+
+    </script>
+    
+</body>
+</html>
