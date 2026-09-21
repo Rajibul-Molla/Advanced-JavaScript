@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local storage</title>
+</head>
+<body>
+
+    <input type="text" id="name" /> 
+    <button id="savebtn">Save</button>
+
+    <script>
+        /*
+            Local Storage is a web browser feature that allows JavaScript to store data in the user's browser as key-value pairs. The data remains stored even after the browser or webpage is closed.
+        */
+
+        let name = document.querySelector("#name");
+        let btn = document.querySelector("#savebtn");
+
+        name.value = localStorage.getItem("name") || "";
+
+        btn.addEventListener("click", ()=>{
+            localStorage.setItem("name", name.value);
+            alert("Saved");
+
+        })
+
+
+
+
+
+
+
+
+
+
+
+        // btn.onclick = ()=>{
+        //     console.log(name.value)
+        // }
+
+
+
+
+    </script>
+    
+</body>
+</html>
