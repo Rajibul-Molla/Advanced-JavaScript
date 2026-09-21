@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Storage</title>
+</head>
+
+<body>
+
+    <h1>Session Storage</h1>
+
+    <input type="text" id="username">
+    <br><br>
+
+    <button id="savebtn">Save</button>
+    <button id="removebtn">Remove</button>
+
+    <script>
+
+        let input = document.querySelector("#username");
+        let button = document.querySelector("#savebtn");
+        let removebtn = document.querySelector("#removebtn");
+
+        // Get username from Session Storage
+        input.value = sessionStorage.getItem("username") || "";
+
+        // Save username
+        button.addEventListener("click", () => {
+        // sessionStorage.setItem("username", input.value);
+        // sessionStorage.setItem("userage", 18);
+        let obj = { name:input.value, age: 18 }
+            // Before saving a object first covert it to string
+        sessionStorage.setItem("person", JSON.stringify(obj));
+            alert("Saved");
+        });
+
+        // Remove username
+        removebtn.addEventListener("click", () => {
+            sessionStorage.removeItem("username");
+            input.value = "";
+            alert("Removed");
+        });
+
+    </script>
+
+</body>
+</html>
