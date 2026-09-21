@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling</title>
+</head>
+<body>
+    
+
+
+    <script>
+        /*
+            Error handling in JavaScript is the process of detecting, catching, and managing errors that occur while a program is running, so the program can handle the problem without suddenly stopping.
+
+            The main keywords used for error handling are:
+
+            try — contains code that may cause an error.
+            catch — handles the error.
+            finally — runs whether an error occurs or not.
+            throw — creates a custom error.
+        */
+       try{
+        console.log("Start of try block");
+
+        xyz();
+
+
+
+        console.log("End of try block");
+       }catch(error){
+        // console.log("Error has occured");
+        console.log(error);
+        console.log(error.name);
+        console.log(error.message);
+        console.log(error.stack);
+
+
+
+        
+       console.log("===========================");
+
+       if(error instanceof ReferenceError){
+        console.log("Ref Error");
+       }
+       else if(error instanceof TypeError){
+        console.log("Typ Error");
+       }
+       else{
+        console.log("Unknown Error");
+       }
+
+
+
+
+
+
+       }
+
+       console.log("--------------next part----------");
+       try{
+        let json ='{"name": "Rajibul","age":30}';
+        let user = JSON.parse(json);
+
+
+        if(!user.name){
+            throw new Error("Incomplete data : name not received");;
+        }
+
+        console.log(user.name);
+        console.log(user.age);
+       }catch(err){
+        console.log(err);
+       }
+       finally{
+        console.log("Finaly always runs");
+       }
+
+       
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
