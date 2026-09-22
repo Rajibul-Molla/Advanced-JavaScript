@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fullscreen api notes</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+
+        /* basic styling for div box */
+        #box {
+            width: 250px;
+            height: 120px;
+            background-color: lightcoral;
+            padding: 15px;
+            border: 1px solid red;
+            margin-top: 10px;
+        }
+
+        /* initially close btn hide rahega */
+        #closeBtm {
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* 
+           CSS pseudo classes for fullscreen 
+        */
+
+        /* Jab box full screen hoga tab light blue background */
+        #box:fullscreen {
+            background-color: lightblue;
+        }
+
+        /* jab box full screen h tabhi close button show kro */
+        #box:fullscreen #closeBtm {
+            display: block;
+        }
+
+        /* backdrop color change for image/video in fullscreen */
+        #fowerImg::backdrop {
+            background-color: pink;
+        }
+
+        img {
+            margin-top: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Advance JS - Fullscreen API</h2>
+
+    <button id="btn">Open Fullscreen Box</button>
+    <button id="toggleBtm">Toggle Fullscreen</button>
+
+    <div id="box">
+        <h3>Hello World</h3>
+        <button id="closeBtm">Exit Fullscreen</button>
+    </div>
+
+    <br><hr>
+
+    <h3>Click image to open in Fullscreen:</h3>
+    <!-- sample image for testing backdrop -->
+    <img id="fowerImg" src="https://picsum.photos/200/200" alt="flower" />
+
+    <script>
+        /*
+            Fullscreen API Notes:
+            ---------------------
+            Methods:
+            1. requestFullscreen() -> element par call hota hai
+            2. exitFullscreen() -> always document par call hota hai (document.exitFullscreen())
+
+            Properties:
+            1. fullscreenElement -> check karta hai fullscreen m hai ya nahi
+            2. fullscreenEnabled -> check karta browser support krta h ya nhi
+
+            Events:
+            1. fullscreenchange -> enter/exit hone pe trigger hota hai
+        */
+
+        // targeting elements (my variable names)
+        let btn = document.querySelector("#btn");
+        let box = document.querySelector("#box");
+        let closeBtm = document.querySelector("#closeBtm");
+        let toggleBtn = document.querySelector("#toggleBtm");
+        let immg = document.querySelector("#fowerImg");
+
+        // 1. Box element ko fullscreen karna
+        btn.addEventListener("click", function() {
+            box.requestFullscreen();
+        });
+
+        // 2. Fullscreen se bahar aana (document element pe chalega)
+        closeBtm.addEventListener("click", () => {
+            document.exitFullscreen();
+        });
+
+
+        // 3. Toggle Function (Same button se open aur close)
+        function toggleFullScreen() {
+            // Check if browser supports fullscreen
+            if(document.fullscreenEnabled) {
+                console.log("Fullscreen Supported");
+            } else {
+                console.log("Fullscreen Not Supported");
+            }
+
+            // check if ALREADY in fullscreen
+            if(!document.fullscreenElement) {
+                // poore document ko full screen le jao
+                document.documentElement.requestFullscreen();
+            } else {
+                // exit fullscreen
+                document.exitFullscreen();
+            }
+        }
+
+        // Toggle button event
+        toggleBtn.addEventListener("click", toggleFullScreen);
+
+        // Enter key press pe toggling screen
+        document.addEventListener("keydown", (event) => {
+            // checking key property
+            if(event.key === "Enter") {
+                toggleFullScreen();
+            }
+        });
+
+
+        // 4. Fullscreen change event listener
+        document.addEventListener("fullscreenchange", function() {
+            if(document.fullscreenElement) {
+                console.log("Entered Fullscreen screen!");
+            } else {
+                console.log("Exited Fullscreen screen!");
+            }
+        });
+
+
+        // 5. Image click  fullscreen
+        immg.addEventListener("click", () => {
+            immg.requestFullscreen();
+        });
+
+    </script>
+</body>
+</html>

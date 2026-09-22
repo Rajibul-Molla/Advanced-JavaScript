@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Visibility API Notes</title>
+</head>
+<body>
+
+    <!-- Sample HTML Elements for Examples -->
+    <h1>JavaScript Page Visibility API</h1>
+    
+    <h2 id="count">0</h2>
+
+    <video id="myVideo" width="400" controls autopause src="video.mp4"></video>
+
+    <script>
+
+        // 1. BASIC LISTENER & VISIBILITY STATE CHECKING
+   
+        document.addEventListener("visibilitychange", () => {
+            console.log("Current Visibility State:", document.visibilityState); 
+
+            if (document.hidden) { 
+                console.log("Page is HIDDEN (user left tab or minimized)"); 
+            } else {
+                console.log("Page is VISIBLE (user returned)"); 
+            }
+        });
+
+
+     
+        // 2. DYNAMIC DOCUMENT TITLE CHANGE ON TAB SWITCH
+  
+        const originalTitle = document.title; 
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                // Change title to draw user attention when they leave tab
+                document.title = "Come back! ";
+            } else {
+                // Restore original title on return
+                document.title = originalTitle; 
+            }
+        });
+
+
+
+        // 3. AUTO-PLAY / PAUSE MEDIA PLAYBACK
+        
+        const video = document.querySelector("#myVideo"); 
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                video.pause(); 
+                console.log("Video paused because page became hidden."); 
+            } else {
+                video.play(); 
+                console.log("Video resumed."); 
+            }
+        });
+
+
+        
+        // 4. PAUSE INTERVAL TIMER WHEN TAB IS INACTIVE
+    
+        let count = 0;
+        const countDisplay = document.querySelector("#count");
+
+        setInterval(() => {
+            // Only increment counter if page is active
+            if (!document.hidden) { 
+                count++;
+                countDisplay.innerText = count; 
+            }
+        }, 1000);
+
+
+
+        // 5. REDUCE SERVER API POLLING CALLS
+
+        function fetchLiveStockData() {
+            console.log("Fetching live stock data from API..."); 
+        }
+
+        // Poll API every 5 seconds, but skip when the page is inactive
+        setInterval(() => {
+            if (!document.hidden) {
+                fetchLiveStockData(); 
+            }
+        }, 5000);
+
+    </script>
+</body>
+</html>

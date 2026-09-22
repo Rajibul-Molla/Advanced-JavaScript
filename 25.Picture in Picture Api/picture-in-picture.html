@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picture-in-Picture API Tutorial</title>
+    <style>
+        /* CSS Pseudo-class for Picture-in-Picture */
+        video:picture-in-picture {
+            border: 4px solid blue;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video Element -->
+    <video id="video" src="video.mp4" controls width="500"></video>
+    <br><br>
+
+    <!-- Buttons -->
+    <button id="pipBtn">Enable Picture-in-Picture</button>
+    <button id="exitPipBtn">Exit Picture-in-Picture</button>
+    <button id="togglePipBtn">Toggle Picture-in-Picture</button>
+
+    <script>
+        // 1. Selecting Elements
+        const video = document.querySelector("#video");
+        const pipBtn = document.querySelector("#pipBtn");
+        const exitPipBtn = document.querySelector("#exitPipBtn");
+        const togglePipBtn = document.querySelector("#togglePipBtn");
+
+
+        // 2. Separate Buttons Code (Enable & Exit)
+        
+        // Enable Picture-in-Picture
+        pipBtn.addEventListener("click", () => {
+            video.requestPictureInPicture();
+        });
+
+        // Exit Picture-in-Picture
+        exitPipBtn.addEventListener("click", () => {
+            document.exitPictureInPicture();
+        });
+
+
+        // 3. Checking Browser Support
+        if ('pictureInPictureEnabled' in document) {
+            console.log("Picture-in-Picture Supported");
+        } else {
+            console.log("Picture-in-Picture Not Supported");
+        }
+
+
+        // 4. Single Toggle Button Code
+        togglePipBtn.addEventListener("click", () => {
+            if (document.pictureInPictureElement) {
+                document.exitPictureInPicture();
+            } else {
+                video.requestPictureInPicture();
+            }
+        });
+
+
+        // 5. Events Handling
+        
+        // Enter Event
+        video.addEventListener("enterpictureinpicture", () => {
+            togglePipBtn.textContent = "Exit Picture-in-Picture";
+        });
+
+        // Leave Event
+        video.addEventListener("leavepictureinpicture", () => {
+            togglePipBtn.textContent = "Enter Picture-in-Picture";
+        });
+
+
+        // 6. Key Down Event (Triggering with 'Enter' key)
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                if (document.pictureInPictureElement) {
+                    document.exitPictureInPicture();
+                } else {
+                    video.requestPictureInPicture();
+                }
+            }
+        });
+
+
+        // 7. Disabling Picture-in-Picture via JS
+        // video.disablePictureInPicture = true;
+
+    </script>
+</body>
+</html>

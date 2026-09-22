@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification API Notes</title>
+</head>
+<body>
+
+    <!-- Sample UI Elements -->
+    <button id="notifyBtn">Show Notification</button>
+
+    <script>
+        
+
+        const btn = document.querySelector("#notifyBtn");
+
+    
+        // 1. REQUESTING PERMISSION AND SHOWING NOTIFICATION
+
+        btn.addEventListener("click", () => {
+            // Check browser support
+            if (!("Notification" in window)) {
+                alert("This browser does not support desktop notifications.");
+                return;
+            }
+
+            // Check current permission level
+            if (Notification.permission === "granted") {
+                showNotification();
+            } else if (Notification.permission !== "denied") {
+                // Request permission if not explicitly denied
+                Notification.requestPermission().then((permission) => {
+                    if (permission === "granted") {
+                        showNotification();
+                    }
+                });
+            }
+        });
+
+
+        // 2. CREATING NOTIFICATION WITH OPTIONS & EVENTS
+   
+        function showNotification() {
+            const options = {
+                body: "You have a new unread message!",
+                icon: "https://via.placeholder.com/128",
+                tag: "message-notification" // Overwrites older notifications with same tag
+            };
+
+            // Instantiate notification object
+            const notification = new Notification("New Message Received", options);
+
+            // Handle user click on notification
+            notification.onclick = () => {
+                window.focus(); // Focus browser window/tab
+                console.log("Notification clicked!");
+                notification.close();
+            };
+
+            // Automatically close after 5 seconds
+            setTimeout(() => {
+                notification.close();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
