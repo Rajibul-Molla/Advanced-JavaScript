@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Speech Api</title>
+</head>
+<body>
+    <button id="startbtn">Start Listening</button>
+    <div id="output"></div>
+
+
+
+
+    <script>
+        const btn = document.querySelector("#startbtn");
+
+        const recognition =new SpeechRecognition();
+        recognition.lang = "en-US";
+
+        btn.addEventListener("click",()=>{
+            recognition.start();
+        })
+
+        // triger after you stop talking
+        recognition.onresult = (event)=>{
+            console.log(event);
+            const text = event.results[0][0].transcript;
+            document.querySelector("#output").textContent = text;
+        }
+
+        recognition.onstart = () => {
+        console.log("Listening Started");
+      };
+//MIC CLOSE
+      recognition.onend = () => {
+        console.log("Listening End");
+      };
+// STOPED TALKING
+      recognition.onspeechend = () => {
+        console.log("Speech End");
+      };
+
+      recognition.onerror = (event) => {
+        console.log(event.error);
+      };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
