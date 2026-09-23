@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Speech Synthesis</title>
+  </head>
+  <body>
+    <h1>Speech Synthesis</h1>
+    <textarea id="text"></textarea>
+    <button id="speakBtn">Speak</button>
+
+    <script>
+      const speakBtn = document.querySelector("#speakBtn");
+      const text = document.querySelector("#text");
+
+      speakBtn.addEventListener("click", () => {
+        // const speech = new SpeechSynthesisUtterance(
+        //   "welcome to javascript learning.",
+        // );
+
+        const speech = new SpeechSynthesisUtterance(text.value);
+
+        speech.lang = "en-IN";
+    
+
+        speech.rate = 0.8;
+
+        speech.pitch = 0.1;
+
+        speech.volume = 1;
+
+        speechSynthesis.speak(speech);
+      });
+    </script>
+  </body>
+</html>

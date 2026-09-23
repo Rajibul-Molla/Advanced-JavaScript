@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Page Reader</title>
+  </head>
+  <body>
+    <h1 id="title">Page Reader</h1>
+
+    <p id="content">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo sunt quaerat ipsam harum, quidem laudantium tenetur sed corrupti cumque quibusdam temporibus libero aliquid. Quasi deleniti voluptatum pariatur consequuntur ut ipsa, aliquid hic incidunt! Fuga blanditiis consectetur suscipit accusantium, deleniti tenetur sequi doloremque pariatur error natus! Aut sint officia quasi pariatur excepturi corporis aperiam delectus itaque tempora voluptas sed quas sit reiciendis atque rem ab, necessitatibus expedita corrupti cum? Delectus inventore minus nemo, molestiae explicabo earum animi facere minima ea nihil obcaecati adipisci nobis aperiam expedita incidunt veritatis porro commodi, eos ratione sed dignissimos! Esse, dolorem debitis. Vero suscipit iste nam ad, quae maiores doloremque animi, saepe nihil tenetur laboriosam consequuntur placeat nesciunt impedit beatae eius aspernatur a asperiores nostrum sequi facilis pariatur dolorum necessitatibus. Aperiam maiores laboriosam vitae totam quo soluta quia error laudantium blanditiis amet. Illo doloremque at autem cupiditate vero laborum dicta quo neque iusto, iste illum qui unde quas accusantium facere ducimus laboriosam dolor libero soluta animi debitis repudiandae commodi, voluptatem sequi. Suscipit delectus quibusdam ipsa enim. Eveniet voluptates inventore impedit, cumque, veniam molestiae exercitationem consequatur similique, odit commodi cupiditate aliquam. Laudantium dolor, doloribus tempore laboriosam similique architecto qui nesciunt in necessitatibus soluta provident sint ipsam odio.
+    </p>
+
+    <button id="readBtn">Read</button>
+
+    <script>
+      const readBtn = document.querySelector("#readBtn");
+
+      readBtn.addEventListener("click", () => {
+        const title = document.querySelector("#title").textContent;
+        const content = document.querySelector("#content").textContent;
+
+        const speech = new SpeechSynthesisUtterance(title + ". " + content);
+
+        speechSynthesis.speak(speech);
+      });
+    </script>
+  </body>
+</html>
