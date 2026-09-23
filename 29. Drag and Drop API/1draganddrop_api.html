@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Api</title>
+    <style>
+        #box{
+            width: 120px;
+            padding: 20px;
+            background: orange;
+            cursor: grab;
+            text-align: center;
+        }
+        #target{
+            width: 300px;
+            height: 200px;
+            border: 3px dashed gray;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" draggable="true">Drag Me</div>
+
+    <div id="target">Drop Here</div>
+
+
+
+
+
+
+
+
+    <script>
+        const box = document.querySelector("#box");
+        const target = document.querySelector("#target");
+
+
+        // triger when dragging started
+        box.addEventListener("dragstart", ()=>{
+            console.log("Dragging Started")
+        })
+
+        // tell the div thata elements can be drag over you
+        target.addEventListener("dragover", (event)=>{
+            event.preventDefault();
+        })
+        // Drop 
+        target.addEventListener("drop",(event)=>{
+            target.appendChild(box);
+            console.log("Dropped")
+        })
+    </script>
+    
+</body>
+</html>
